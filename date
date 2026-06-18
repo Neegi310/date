@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Өнөөдөр Болзох урилга 🌸</title>
+    <title>Болзооны урилга 🌸</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            -webkit-tap-highlight-color: transparent; /* Утсан дээр дарахад цэнхэр хүрээ гаргахгүй */
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -18,12 +18,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #ffe6f2; /* Зөөлөн ягаан дэвсгэр */
+            background-color: #ffe6f2; 
             overflow: hidden;
             padding: 20px;
         }
 
-        /* Картны ерөнхий загвар (Утсанд зориулсан хэмжээ) */
         .card {
             background: white;
             padding: 25px;
@@ -36,21 +35,20 @@
         }
 
         .profile-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 20px;
+            width: 100%;
+            height: 160px;
+            border-radius: 18px;
             object-fit: cover;
             margin-bottom: 20px;
         }
 
         h2 {
             color: #4a1525;
-            font-size: 20px;
+            font-size: 19px;
             margin-bottom: 25px;
             line-height: 1.4;
         }
 
-        /* Товчлууруудын контейнер */
         .btn-container {
             display: flex;
             justify-content: space-between;
@@ -74,21 +72,19 @@
         #yesBtn {
             background-color: #ff66a3;
             color: white;
-            z-index: 10; /* Тийм товч үргэлж дээр нь байна */
+            z-index: 10;
         }
 
-        /* Үгүй товчлуур утсан дээр чөлөөтэй зугтах хэсэг */
         #noBtn {
             background-color: #e5cbd9;
             color: #604d59;
             position: absolute;
-            right: 10px; /* Эхлэх байрлал */
+            right: 10px;
             transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.1) !important;
-            touch-action: none; /* Утсан дээр scroll хийхийг хориглоно */
+            touch-action: none;
             z-index: 5;
         }
 
-        /* 2-р хуудас: Хоолны сонголтууд */
         .food-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -123,7 +119,6 @@
             font-weight: 600;
         }
 
-        /* Нуух ангилал */
         .hidden {
             display: none !important;
         }
@@ -132,7 +127,7 @@
 <body>
 
     <div id="page1" class="card">
-        <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?w=400" alt="Cute" class="profile-img">
+        <img src="monkey.jpeg" alt="Monkey" class="profile-img">
         <h2>🌸 Салхилах уу хөөрхөнөө? 🌸</h2>
         
         <div class="btn-container" id="container">
@@ -142,8 +137,8 @@
     </div>
 
     <div id="page2" class="card hidden">
-        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400" alt="Food" class="profile-img">
-        <h2>Yaaay! 🥰 Яг хоолоо идчихээд л салхилая хоолоо сонгоорой kiss kiss</h2>
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500" alt="Luxury View" class="profile-img">
+        <h2>Yaaay! 🥰 Яг хоолоо идчихээд л салхилая. Юу идмээр байна? kiss kiss</h2>
         
         <div class="food-options">
             <div class="food-item" onclick="selectFood('Бургер 🍔')">
@@ -154,11 +149,11 @@
                 <span>🍕</span>
                 <p>Пицца</p>
             </div>
-            <div class="food-item" onclick="selectFood('Жантай гоймон')">
+            <div class="food-item" onclick="selectFood('Жантай гоймон 🍜')">
                 <span>🍜</span>
                 <p>Жантай гоймон</p>
             </div>
-            <div class="food-item" onclick="selectFood('Намайг')">
+            <div class="food-item" onclick="selectFood('Намайг ✨')">
                 <span>👶</span>
                 <p>Намайг</p>
             </div>
@@ -166,7 +161,7 @@
     </div>
 
     <div id="page3" class="card hidden">
-        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" alt="Love" class="profile-img">
+        <img src="sky.jpeg" alt="Sky" class="profile-img">
         <h2>Ойлголооо! Тэгвэл удахгүй уулзацгаая хөөрхөнөө 💖</h2>
         <p id="finalMessage" style="margin-top: 18px; color: #ff66a3; font-weight: bold; font-size: 16px;"></p>
     </div>
@@ -179,47 +174,35 @@
         const page3 = document.getElementById('page3');
         const finalMessage = document.getElementById('finalMessage');
 
-        // Утсан дээр хуруу хүрэх (touchstart) эсвэл дарах үед зугтах функц
         function escapeButton(e) {
-            e.preventDefault(); // Товчны үндсэн үйлдлийг зогсооно
-            
-            // Карт дотор чөлөөтэй зугтах хязгаарыг тодорхойлно
-            // Утасны дэлгэц жижиг тул картнаасаа гаргахгүй байх нь чухал
-            const padding = 20;
+            e.preventDefault(); 
             const containerBounds = container.getBoundingClientRect();
             const btnBounds = noBtn.getBoundingClientRect();
 
-            // Санамсаргүй шинэ байрлал бодох (Картны зүүн, баруун, дээд, доод тал руу үсрэнэ)
             const maxX = containerBounds.width - btnBounds.width;
-            const maxY = 120; // Босоо чиглэлд үсрэх зай (дээшээ доошоо)
+            const maxY = 100; 
 
             let randomX = Math.random() * maxX;
             let randomY = (Math.random() * maxY) - (maxY / 2);
 
-            // "Тийм" товчлуур дээр давхцаж очихоос сэргийлэх логик
-            if (randomX < 100 && Math.abs(randomY) < 30) {
-                randomX += 120; // Хэрэв "Тийм" товчтой хэт ойртвол баруун тийш түлхэнэ
+            if (randomX < 120 && Math.abs(randomY) < 40) {
+                randomX += 130; 
             }
 
-            // Шинэ байрлалыг оноож өгөх
-            noBtn.style.right = 'auto'; // Эхний утгыг цуцална
+            noBtn.style.right = 'auto';
             noBtn.style.left = randomX + 'px';
             noBtn.style.transform = `translateY(${randomY}px)`;
         }
 
-        // Гар утсанд зориулсан мэдрэгч үйл явдлууд
         noBtn.addEventListener('touchstart', escapeButton);
         noBtn.addEventListener('click', escapeButton);
-        // Компьютер дээр шалгах тохиолдолд:
         noBtn.addEventListener('mouseover', escapeButton);
 
-        // ТИЙМ дарахад 2-р хуудас руу шилжих
         function nextPage() {
             page1.classList.add('hidden');
             page2.classList.remove('hidden');
         }
 
-        // Хоол сонгоход 3-р хуудас руу шилжих
         function selectFood(foodName) {
             page2.classList.add('hidden');
             page3.classList.remove('hidden');
